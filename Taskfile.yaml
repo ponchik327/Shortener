@@ -1,0 +1,29 @@
+version: '3'
+
+tasks:
+  lint:
+    desc: "Запускает golangci-lint"
+    silent: true
+    cmds:
+      - pre-commit run golangci-lint --all-files
+
+  run:
+    desc: "Запускает приложение используя конфиг"
+    silent: true
+    cmds:
+      - go run ./cmd/app/main.go --config config.yaml
+
+  docker:up:
+    desc: "Поднимает все Docker-контейнеры (postgres, rabbitmq, app)"
+    cmds:
+      - docker compose up -d
+
+  docker:down:
+    desc: "Останавливает и удаляет все Docker-контейнеры"
+    cmds:
+      - docker compose down
+
+  docker:down:volumes:
+    desc: "Останавливает контейнеры и удаляет все volumes (сбрасывает данные БД и брокера)"
+    cmds:
+      - docker compose down -v
