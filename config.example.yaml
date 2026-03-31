@@ -1,0 +1,39 @@
+app:
+  # Имя приложения (используется в логах)
+  name: shortener
+  # Окружение: local | dev | prod
+  env: local
+
+server:
+  # Адрес, на котором слушает HTTP-сервер
+  host: "0.0.0.0"
+  # Порт HTTP-сервера
+  port: 8080
+  # Таймаут чтения запроса
+  read_timeout: 5s
+  # Таймаут записи ответа
+  write_timeout: 10s
+  # Таймаут keep-alive соединения
+  idle_timeout: 120s
+
+logger:
+  # Движок логирования: zap | slog | zerolog | logrus
+  engine: zap
+  # Уровень логирования: debug | info | warn | error
+  level: info
+
+database:
+  # DSN для подключения к PostgreSQL
+  dsn: "postgres://shortener:shortener@localhost:5432/shortener?sslmode=disable"
+
+redis:
+  # Адрес Redis-сервера (host:port)
+  address: "localhost:6379"
+  # Пароль Redis (оставить пустым, если без авторизации)
+  password: ""
+  # TTL записей в кэше
+  cache_ttl: 1h
+
+shortener:
+  # Длина генерируемого short code (мин. 3, макс. 30)
+  code_length: 8
