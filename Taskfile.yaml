@@ -18,6 +18,16 @@ tasks:
     cmds:
       - docker compose up -d
 
+  docker:rebuild:
+    desc: "Пересобирает образ приложения и перезапускает контейнер"
+    cmds:
+      - docker compose up -d --build app
+
+  docker:logs:
+    desc: "Показывает логи приложения в реальном времени"
+    cmds:
+      - docker compose logs -f app
+
   docker:down:
     desc: "Останавливает и удаляет все Docker-контейнеры"
     cmds:
