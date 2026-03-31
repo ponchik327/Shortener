@@ -14,7 +14,13 @@
 
 ### Вариант 1 — Docker Compose (рекомендуется)
 
-Поднимает PostgreSQL, Redis, запускает миграции и само приложение:
+1. Скопируйте конфиг и при необходимости отредактируйте:
+
+```bash
+cp config.example.yaml config.yaml
+```
+
+2. Поднимает PostgreSQL, Redis, запускает миграции и само приложение:
 
 ```bash
 docker compose up -d
